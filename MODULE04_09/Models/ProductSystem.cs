@@ -22,5 +22,16 @@ namespace MODULE04_09.Models
             return result;
 
         }
+
+        public IEnumerable<Product> GetProductsByCategoryID(int id)
+        {
+            NorthwindEntities db = new NorthwindEntities();
+            var query = from p in db.Products
+                        where p.CategoryID == id
+                        select p;
+
+            var result = query.ToList();
+            return result;
+        }
     }
 }
